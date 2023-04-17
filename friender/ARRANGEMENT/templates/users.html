@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Users{% endblock title %}
+
+{% block the_rest_body %}
+<table class="table table-warning table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Sex</th>
+      <th scope="col">City</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for key, value in users.items %}
+    <tr>
+      <th scope="row">{{ key|upper }}</th>
+      <td>{{ value.0 }}</td>
+      <td>{{ value.1|upper }}</td>
+      <td>{{ value.2|upper }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock the_rest_body %}
