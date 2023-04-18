@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import datetime
+from .models import Users
 
 
 def main_page(request):
@@ -8,15 +9,18 @@ def main_page(request):
 
 
 def users(request):
-    user_list = {
-        'Andrei': [25, 'male', 'Minsk'],
-        'Dmitri': [27, 'male', 'Minsk'],
-        'Pavel': [23, 'male', 'Orsha'],
-        'Olga': [24, 'female', 'Minsk'],
-        'Yulia': [22, 'female', 'Minsk'],
-        'Anna': [21, 'female', 'Vitebsk']
-    }
-    return render(request, 'users.html', context={'users': user_list})
+    return render(request, 'users.html', {"users": Users.objects.all()})
+
+# def users(request):
+#     user_list = {
+#         'Andrei': [25, 'male', 'Minsk'],
+#         'Dmitri': [27, 'male', 'Minsk'],
+#         'Pavel': [23, 'male', 'Orsha'],
+#         'Olga': [24, 'female', 'Minsk'],
+#         'Yulia': [22, 'female', 'Minsk'],
+#         'Anna': [21, 'female', 'Vitebsk']
+#     }
+#     return render(request, 'users.html', context={'users': user_list})
 
 def places(request):
     return render(request, 'places.html')

@@ -4,23 +4,31 @@
 
 {% block the_rest_body %}
 <table class="table table-warning table-striped">
-  <thead>
+    <thead>
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Age</th>
-      <th scope="col">Sex</th>
-      <th scope="col">City</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Age</th>
+        <th scope="col">Sex</th>
+        <th scope="col">City</th>
+        <th scope="col">Email</th>
     </tr>
-  </thead>
-  <tbody>
-  {% for key, value in users.items %}
+    </thead>
+    <tbody>
+    {% for user in users %}
     <tr>
-      <th scope="row">{{ key|upper }}</th>
-      <td>{{ value.0 }}</td>
-      <td>{{ value.1|upper }}</td>
-      <td>{{ value.2|upper }}</td>
+        <th scope="row">{{ user.name }}</th>
+        <td>{{ user.surname }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.sex }}</td>
+        <td>{{ user.city }}</td>
+        {% if user.email %}
+        <td>{{ user.email }}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
     </tr>
-  {% endfor %}
-  </tbody>
+    {% endfor %}
+    </tbody>
 </table>
 {% endblock the_rest_body %}
